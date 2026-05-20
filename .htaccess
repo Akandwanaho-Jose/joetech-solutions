@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Send the project root to the public web entry.
+RewriteRule ^$ public/ [L]
+
+# If the requested file or directory does not exist at the root,
+# serve the matching resource from /public instead.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)$ public/$1 [L,QSA]
